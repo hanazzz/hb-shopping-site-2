@@ -13,7 +13,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+            {% for melon in melon_objects_list %}
+                <tr>
+                    <th>{{melon.common_name}} </th>
+                    <th>{{melon.quantity}}</th>
+                    <th>${{"{:.2f}".format(melon.price)}}</th>
+                    <th>${{"{:.2f}".format(melon.cost)}}</th>
+                </tr>
+            {% endfor %}
+        <!-- <tr>
             <td>Ancient Watermelon</td>
             <td>5</td>
             <td>$3.00</td>
@@ -36,11 +44,11 @@
             <td>2</td>
             <td>$3.00</td>
             <td>$6.00</td>
-        </tr>
+        </tr> -->
         </tbody>
     </table>
 
-    <h3>Total: $27.00</h3>
+    <h3>Total: ${{"{:.2f}".format(total_order_cost)}}</h3>
 
     <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 
