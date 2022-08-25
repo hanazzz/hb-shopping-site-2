@@ -124,25 +124,24 @@ def add_to_cart(melon_id):
     if session.get("cart") == None:
         session["cart"] = {}
 
-    #if melon id isnt in cart, add it to the cart
-    # METHOD 1
+
     if melon_id not in session['cart']:
-        session['cart'][melon_id] = 0
+        session['cart'][melon_id] = 1
+        flash('You have sucessfully added to the cart!')
+    else:
+        session['cart'][melon_id] += 1
+        flash('Increased quantity in your cart by 1!')
 
-    # increase quantity by 1
-    session['cart'][melon_id] += 1
 
-    #when we add somethings to the car flash this message
-    flash('You have sucessfully added to the cart')
-
-    # # METHOD 2
+    # #if melon id isnt in cart, add it to the cart
     # if melon_id not in session['cart']:
-    #     session['cart'][melon_id] = 1
-    # else:
-    #     # increase quantity by 1
+    #     session['cart'][melon_id] = 0
 
+    # # increase quantity by 1
+    # session['cart'][melon_id] += 1
 
-
+    # #when we add somethings to the cart flash this message
+    # flash('You have sucessfully added to the cart')
 
     return redirect('/cart')
 
